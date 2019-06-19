@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+
+<body>
+    <div id="box">
+        <h3>标签</h3>
+        <p>header：定义头部</p>
+        <p>nav：定义导航内容</p>
+        <P>article：定义正文内容</P>
+        <p>section：定义段落</p>
+        <p>aside：边栏内容</p>
+        <P>footer：定义页脚</P>
+        <p>embed：嵌入的内容</p>
+        <p><mark>音频</mark></p>
+        <p>video/audio组合source元素：可以链接不同的音频文件，也可以为同意媒体文件指定多个播放格式，浏览器将使用第一个可识别的格式</p>
+        <p>loop：循环播放，autoplay ：自动播放，controls：控制条</p>
+        <img src="img/audio.png" style="height:50px"/>
+    </div>
+    <div id="box1">
+        <h3>表单元素</h3>
+        <from>
+            数值文本框(number)：<input type="number" max='100' min="0" step="2" />
+            <br/>
+            url输入文本框(url)：<input type="url" placeholder="请输入网址" />
+            <br/>
+            电话号码输入框(tel)：<input type="tel" placeholder="请输入电话号码" />
+            <br/>
+            邮箱输入框(email)：<input type="email" placeholder="请输入邮箱"  />
+            <br/>
+            滑动条(range)：<input type="range" max='100' min="0" step="2" value="0" />
+            <br/>
+            日期date：<input type="date" />
+            <br/>
+            时间time：<input type="time" />
+            <br/>
+            month<input type="month" required/>
+            <br/>
+            week<input type="week" />
+            <br/>
+            颜色color:<input type="color" />
+            <br/>
+            搜索框search（与datalist配合使用）：<input type="search" list="ha" style="background-color: pink">
+            <datalist id="ha">
+                <option>苹果</option>
+                <option>雪梨</option>
+                <option>香蕉</option>
+            </datalist>
+            <br/>
+        </from>
+
+        <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+                0<input type="range" value="50" id="a" />100
+                +<input type="number" value="50" id="b" />
+                =<output name="x" for="a b"></output>
+        </form>
+        <p>formaction——提交到不同页面</p>
+        <P>formmethod——不同的提交方法</P>
+        <p><mark>required——规定输入域在提交之前必须填写</mark></p>
+        <p>autofocus——自动聚焦</p>
+        <p>multiple——可以上传多个文件</p>
+    </div>
+    <div id="box2">
+        <h3>地理位置</h3>
+        <p>navigator.geolocation</p>
+        <P>latitude——维度</P>
+        <P>longitude——精度</P>
+        <p>navigator.geolocation.getCurrentPosition(onSuccess, onError, options)</p>
+        <P>navigator.geolocaton.watchPosition()——持续监视当前地理位置</P>
+        <p>clearWatch()——清除监视</p>
+    </div>
+    <div id="box3">
+        <h3>离线缓存</h3>
+        <p>特点:离线浏览，加快速度，减少服务器负载</p>
+        <P><mark><<span>html manifest="cacheData.appCache"</span>></mark></P>
+        <p>manifest文件分为三个部分：CACHE MANIFEST,NETWORK,FALLBACK</p>
+        <P>CACHE MANIFEST:在此标题下列出的文件会在首次加载后换成，写在第一行，必须该有的部分</P>
+        <p>NETWORK：在此标题下的文件不会被缓存，需要与服务器连接，离线不可用</p>
+        <P>FALLBACK：获取不到缓存资源时的备选路径</P>
+        <P>调用当前应用资源的下载过程：applicationCache.update()</P>
+        <P style="background-color:rgb(255, 129, 148);">更新到最新缓存，不会使之前加载的资源突然被重新加载：applicationCache.swapCache()</P>
+        <img src="img/manifest.png" height='200px;'/>
+    </div>
+    <div id="box4">
+        <h3>web存储</h3>
+        <P>优点：
+            <br/>存储空间大；
+            数据仅仅存在本地，不会自动向服务器发送；
+            <br/>
+            提供丰富的接口，方便的数据操作；<br/>
+            独立的存储空间，每个域都有各自的存储空间，不会造成混乱</P>
+        <p>localStorage：将数据保存在客户端本地的<mark>硬件设备</mark>中</p>
+        <p>sessionStorage：将数据保存在session对象中</p>
+        <p><mark>localStorage为永久保存，而sessionStorage为临时保存</mark></p>
+        <p>存储数据项：
+            <div style="padding-left:90px;">
+                <P><mark>localStorage.setItem(key,value)</mark></P>
+                <p>localStoragep['key']=value</p>
+                <p>localStorage.key=value</p>
+            </div>
+        </p>
+        <p>读取数据项：
+            <div style="padding-left:90px;">
+                <P><mark>localStorage.getItem(key)</mark></P>
+                <p>localStoragep['key']</p>
+                <p>localStorage.key</p>
+            </div>
+        </p>
+        <p>删除数据项：<mark>localStorage.removeItem(key)</mark></p>
+        <p>清除全部数据：<mark>localStorage.clear()</mark></p>
+        <p>获取数据项的个数：<mark>localStorage.length</mark></p>
+    </div>
+    <div id="box5">
+        <h3>数据通信</h3>
+        <p>WebSocket是HTML5提供的一种浏览器与服务器间进行<mark>全双工通讯</mark>的网络通讯协议</p>
+        <p>WebSocket是应用层协议，通过TCP传输数据，可以发送文本，也可以发送二进制数据</p>
+        <P>var socket=new webSocket("url")</P>
+    </div>
+    <div id="box6">
+        <h3>文件</h3>
+        上传多个文件：<input type="file" multiple id='file'>
+        <br/>
+        <button onclick="ha()">显示文件信息</button>
+        <br/>
+        file.size：<span id="size"></span><br/>
+        file.type：<span id="type"></span>
+        <p>files有length和item属性，可以通过<mark>files.[index]</mark>或者<mark>files.item(index)</mark>选择文件对象</p>
+        <p>如：var file=document.getElementById('file').files[0]</p>
+        <p>FIleReader对象方法：
+            <div style="padding-left:90px;">
+                <P><mark>readAsDataURL</mark></P>
+                <p>readAsBinaryString</p>
+                <p>readAsText</p>
+            </div>
+        </p>
+        <p>图片预览</p>
+        <img src="img/img.png" style="height:300px;;" />
+    </div>
+    <div id="box7">
+        <h3>拖放,dataTransfer</h3>
+        <p>preventDefault()——取消时间默认动作</p>
+        <p>读数据：ev.dataTransfer.getData("text")</p>
+        <p>存入数据：ev.dataTransfer.setData("text",ev.target.innerHTML)</p>
+        <p>将需要拖放的元素的draggable属性设为true：<mark>draggable="true"</mark></p>
+        <p>img与a元素默认允许拖放</p>
+        <p>拖动事件：
+            <div style="padding-left:90px;">
+                <P><mark>dragstart——拖动开始</mark></P>
+                <p><mark>dragover——拖动过程中</mark></p>
+                <p><mark>drop——拖动结束</mark></p>
+            </div>
+        </p>
+        <img src="img/dataTransfer.png" style="height:300px;"/>
+        <p>文件与拖放的组合运用</p>
+        <img src="img/dropimg.png" style="height:400px;" />
+    </div>
+    <div id="box8">
+        <h3>画布</h3>
+        <p>设置canvas元素的宽高时，不建议使用px后缀</p>
+        <img src="img/canvax.png" style="height:70px;" />
+        <p><mark>getContext()方法</mark></p>
+        <img src="img/content.png" style="height:50px" />
+        <p>描边：context.stroke()</p>
+        <P>填充：context.fill()</P>
+        <p><mark>圆：context.arc(x,y,r,起始角，结束角,顺/逆时针)</mark></p>
+        <p><mark>矩形：context.rect(x,y,width,height)</mark></p>
+        <P>实心矩形：fillRect()</P>
+        <p>空心矩形：strokeRect()</p>
+        <p>透明度：context.globalAlpha=0.5;</p>
+        <p>线条样式：context.lineCap(butt/round/square)</p>
+        <p>画布平移：context.translate(100,100)</p>
+        <p>画布平移：context.rotate(angle)</p>
+        <p>画布缩放：context.scale(1,1)</p>
+        <p>文字方法：strokeText(),fillText()</p>
+        <p>阴影属性</p>
+        <img src="img/shadow.png" style="height:80px;" />
+        <br/>
+        <p>渐变</p>
+        <p>径向渐变：createRadialGradient()</p>
+        <img src="img/jianbian.png" style="height:250px" />
+    </div>
+    <div id="box9">
+        <h3>属性选择器</h3>
+        <p>[id^="ha"]：选择以ha<mark>开头</mark>的id</p>
+        <p>[id$="ha"]：以ha<mark>结尾</mark>的id</p>
+        <p>[id*="ha"]：<mark>包含</mark>ha的id</p>
+        <h3>伪元素选择器</h3>
+        <p>&nbsp;:first-line&nbsp;——对象的第一行</p>
+        <p>&nbsp;:first-letter&nbsp;——对象的第一个字符</p>
+        <p>&nbsp;:befor&nbsp;——对象前的内容，必须定义content属性</p>
+        <p>&nbsp;:after&nbsp;——对象后的内容，必须定义content属性</p>
+        <img src="img/after.png" style="height:150px";/>
+        <img src="img/before.png" style="height:80px;";/>
+        <p>&nbsp;:root&nbsp;——匹配文档的根元素，<mark>在HTML中，根元素永远是HTML</mark></p>
+        <p>&nbsp;body:not(h1)&nbsp;——body中不包含h1的元素</p>
+        <p>&nbsp;:empty&nbsp;——匹配没有任何子元素的元素</p>
+        <p>&nbsp;:target&nbsp;——当前活动的目标元素</p>
+        <p>&nbsp;:first-child&nbsp;——匹配父元素的第一个子元素</p>
+        <p>&nbsp;:only-child&nbsp;——子元素是父元素的唯一元素</p>
+        <p>&nbsp;:nth-child(3n+1)&nbsp;——可以选中第1,3,7个元素</p>
+        <p>&nbsp;:nth-last-child(n)&nbsp;——倒数第n个元素</p>
+    </div>
+    <div id="box10">
+        <h3>文本阴影,换行</h3>
+        <p>text-shadow(x,y,blur,color)</p>
+        <p>word-wrap：normal&nbsp;/&nbsp;break-work&nbsp;/&nbsp;break-all</p>
+        <p>break-all：允许在单词内换行</p>
+        <p>break-word：在<mark>长单词</mark>或url地址内部进行换行</p>
+    </div>
+    <div id="box11">
+        <h3>背景</h3>
+        <P>background-size:length&nbsp;|&nbsp;percentage|&nbsp;cover&nbsp;|&nbsp;contain</P>
+        <p>背景图片的定位区域：background-origin：padding-box&nbsp;|&nbsp;border-box&nbsp;|&nbsp;content-box</p>
+        <p>背景图片的绘制区域：background-cilp：padding-box&nbsp;|&nbsp;border-box&nbsp;|&nbsp;content-box</p>
+        <p>box-shadow:x,y,blur,spread,color,inset</p>
+        <p>blur:模糊距离，spread:阴影的尺寸</p>
+        <p>inset:可选，将外部阴影改为内部阴影</p>
+    </div>
+    <div id="box12">
+        <h3>变形处理</h3>
+        <P>线性渐变：backgroung：linear-gradient()</P>
+        <p>平移：transform:translate(x,y)</p>
+        <p>旋转：transform：rotate()</p>
+        <p>缩放：transform：scale()</p>
+        <p>倾斜：transform：skew()</p>
+        <p>反转一个图片：transform：scaleX(-1)</p>
+        <p>transform-origin：改变基点位置</p>
+    </div>
+    <div id="box13">
+        <h3>动画效果</h3>
+        <p>要过渡的属性：transition-property</p>
+        <p>过渡时间：transition-duration</p>
+        <p>过渡效果：transition-timing-function</p>
+        <p>延迟时间：transiton-delay</p>
+        <p> transition: width 1s ease 2s,height 2s linear</p>
+        <p>动画：animation</p>
+    </div>
+    <div id="box14">
+        <h3>多列布局</h3>
+        <p>列数：column-count</p>
+        <p>列宽：column-width</p>
+        <p>columns：column-count column-width</p>
+        <p>column-gap：列之间的间隔</p>
+        <p>column-rule：间隔线的宽度，样式和颜色</p>
+        <p>column-rule：3px outset red;</p>
+        <p>column-rule-width,column-rule-style,column-rule-color</p>
+        <p>dashed：虚线，solid：实线</p>
+        <p>横跨所有列：<mark>column-span</mark>：none&nbsp;|&nbsp;all;</p>
+    </div>
+    <div id="box15">
+        <h3>盒布局</h3>
+        <P><mark>display：flex &nbsp; | &nbsp; inline-flex;</mark></P>
+        <p>任何一个容器都可以指定为弹性盒子，设为flex布局以后，子元素的float，clear属性将失效</p>
+        <p>定义flex项目在主轴的排列方式：<mark>flex-direction</mark>：row&nbsp; | &nbsp; row-reverse&nbsp; | &nbsp; column | column-reverse</p>
+        <img src="img/flex.png" style="height:50px;"/>
+        <p>flex-wrap：nowrap&nbsp; | &nbsp;wrap&nbsp; | &nbsp;wrap-reverse(换行，第一行在下方)</p>
+        <P>规定flex项目在主轴上的对齐方式：<mark>justify-content</mark>：flex-start&nbsp; | &nbsp;flex-end&nbsp; | &nbsp;center&nbsp; | &nbsp;space-between&nbsp; | &nbsp;space-around</mark></P>
+        <img src="img/flex2.png" style="height:200px;"/>
+        <p>在纵轴上的对齐方式：<mark>align-items</mark>：flex-start&nbsp; | &nbsp;flex-end&nbsp; | &nbsp;center&nbsp; | &nbsp;baseline&nbsp; | &nbsp;stretch</p>
+        <img src="img/flex3.png" style="height:200px;" />
+        <p>定义项目的放大属性：flex-grow：number;</p>
+        <p>定义项目的缩小属性：flex-shrink：number;</p>
+        <p>设置弹性盒伸缩基准值：flex-basis：number;</p>
+    </div>
+    <div id="box16">
+        <h3>媒体查询</h3>
+        <p>@media screen and (max-width：900px){样式代码}</p>
+    </div>
+    <div id="box17">
+        <h3>Bootstrap</h3>
+        <p>Jquery必须在Bootstrap之前引入</p>
+        <p><<span>meta name="viewport" content="width=device-width,initial-scale=1"</span>></p>
+        <p><mark>container类用于固定宽度并支持响应式布局的容器</mark></p>
+        <p><mark>container-fluid类用于100%宽度，占据全部视窗的容器</mark></p>
+        <p>手机：class="col-xs-n"</p>
+        <p>平板：col-sm-n</p>
+        <p>电脑：col-md-n</p>
+        <p>col-md-push：向后,col-md-pull：向前(这两个都是利用相对定位实现的)</p>
+        <p>col-md-offset-4：在原本的位置向偏移四个列</p>
+    </div>
+    <div id="box18">
+        <h3>排版 <small>副标题(small标签)</small></h3>
+        <p class="lead">突出显示：.lead</p>
+        <p><del>被删除的文本(del/s)</del></p>
+        <p><u>下划线(u/ins)</u></p>
+        <P>文本左对齐：class="text-left"</P>
+        <p>右对齐：text-right，居中对齐：text-center</p>
+        <p>两端对齐：text-justify</p>
+        <p>不换行：text-nowrap</p>
+        <p>首字母大写：text-capitalize</p>
+        <h3>列表</h3>
+        <p>不显示列表项符号：class='list-unstyle'</p>
+        <p>将所有列表项放于同一行：class=".list-inline"</p>
+        <h3>图片和代码</h3>
+        <p>显示代码：code 和 pre(多行代码)标签</p>
+        <p>圆角图片：class="img-rounded"</p>
+        <p>圆形图片：class="img-circle"</p>
+        <p>表框圆角：class="img-thumbnail"</p>
+        <h3>表格</h3>
+        <p>条纹状表格：class="table-striped"</p>
+        <p>给每个单元格添加边框：class="table-bordered</p>
+        <p>鼠标悬停：table-hover</p>
+        <p>使表格更加紧凑：table-condensed</p>
+        <h3>表单</h3>
+        <p>创建表单：
+            <div style="margin-left:60px;">
+                <p>1.向form元素添加role="form" </p>
+                <p>2.把标签和控件放在一个带有  .form-group的div中，以获得最佳间距</p>
+                <p>3.向input,textarea,select添加class="form-control"</p>
+            </div>
+        </p>
+        <p>class="from-horizontal"组合栅格类：可以使label标签和空间水平排列</p>
+        <h3>按钮</h3>
+        <p>可为a,button,input元素添加class="btn"</p>
+        <p>按钮尺寸：btn-lg,btn-sm,btn-xs</p>
+        <p>关闭按钮：class="button"</p>
+        <p>下拉：class="caret"</p>
+        <h3>组件</h3>
+        <p>引用图标：class="gyphicon gyphicon-star"</p>
+        <p>按钮组：class="btn-group" </p>
+        <p>按钮组垂直排列：class="btn-group-vertical</p>
+
+    </div>
+    <div id="box19">
+        <h3>插件</h3>
+        <p>面包屑：class="breadcrumb"</p>
+        <p>标签页：class="nav nav-tabs"</p>
+        <p>两端对齐：nav-justified</p>
+        <p><mark>分页：class="pagination"</mark></p>
+        <img src="img/fenye.png" style="height:100px;" />
+        <p>翻页：class="pager</p>
+        <p><mark>徽章：class="badge"</mark></p>
+        <h3>模态框</h3>
+        <img src="img/modal.png" style="height:400px;"/>
+        <h3>导航条</h3>
+        <img src="img/nav.png" height="350px" />
+        <h3>缩略图</h3>
+        <img src='img/suoluetu.png' height="100px" />
+    </div>
+</body>
+
+<script>
+    function ha(){
+        var file=document.getElementById("file").files[0];
+        var size=document.getElementById("size");
+        var type=document.getElementById("type");
+        size.innerHTML=file.size;
+        type.innerHTML=file.type;
+    }
+</script>
+</html>
