@@ -27,6 +27,7 @@
     <div id="box1">
         <h3>表单元素</h3>
         <from>
+            <p>表单元素一定要放在from标签里面</p>
             数值文本框(number)：<input type="number" max='100' min="0" step="2" />
             <br/>
             url输入文本框(url)：<input type="url" placeholder="请输入网址" />
@@ -73,7 +74,7 @@
         <P>latitude——维度</P>
         <P>longitude——经度</P>
         <p>accuracy——精度</p>
-        <p>speed——速度</p>
+        <p>altitude——海拔</p>
         <p>heading——方向</p>
         <p>navigator.geolocation.getCurrentPosition(onSuccess, onError, options)</p>
         <P>navigator.geolocaton.watchPosition()——持续监视当前地理位置</P>
@@ -97,15 +98,15 @@
             <br/>存储空间大；
             数据仅仅存在本地，不会自动向服务器发送；
             <br/>
-            提供丰富的接口，方便的数据操作；<br/>
+            提供丰富的接口，方便数据操作；<br/>
             独立的存储空间，每个域都有各自的存储空间，不会造成混乱</P>
-        <p>localStorage：将数据保存在客户端本地的<mark>硬件设备</mark>中，即使浏览器关闭，数据仍然存在，下次打开浏览器还可以继续使用</p>
-        <p>sessionStorage：将数据保存在session对象中，浏览器关闭后，数据会被删除</p>
+        <p>localStorage：将数据保存在客户端本地的<mark>硬件设备</mark>中，即使浏览器被关闭了，数据仍然存在，下次打开浏览器还可以继续使用</p>
+        <p>sessionStorage：将数据保存在session对象中，当浏览器被关闭后，数据会被删除</p>
         <p><mark>localStorage为永久保存，而sessionStorage为临时保存</mark></p>
         <p>存储数据项：
             <div style="padding-left:90px;">
                 <P><mark>localStorage.setItem(key,value)</mark></P>
-                <p>localStoragep['key']=value</p>
+                <p>localStorage['key']=value</p>
                 <p>localStorage.key=value</p>
             </div>
         </p>
@@ -119,22 +120,23 @@
         <p>删除数据项：<mark>localStorage.removeItem(key)</mark></p>
         <p>清除全部数据：<mark>localStorage.clear()</mark></p>
         <p>获取数据项的个数：<mark>localStorage.length</mark></p>
+        <p>获取键名：localStorage.key(index)</p>
     </div>
     <div id="box5">
         <h3>数据通信</h3>
         <p>WebSocket是HTML5提供的一种浏览器与服务器间进行<mark>全双工通讯</mark>的网络通讯协议</p>
-        <p>WebScoket是全双工通信协议，HTTP是单向通信协议</p>
-        <p>对于WebScoket来说，它必须依赖HTTP协议进行一次握手，握手成功后，数据直接从TCP通道传输，此后就与HTTP无关了</p>
-        <p>特点：
-            <div style="padding-left:50px;">
-                <P>建立在TCP之上，服务器端的实现比较容易</P>
-                <p>与HTTP协议有良好的兼容性</p>
-                <p>数据格式比较轻量，性能开销小，通信高效</p>
-                <p>可以发送文本，也可以发送二进制数据</p>
-                <p>没有同源限制，客户端可以和任意服务器通信</p>
-            </div>
-        </p>
         <P>var socket=new webSocket("url")</P>
+        <p>WebScoket和HTTP是应用层协议，通过TCP传输数据，WebScoket是全双工通信协议，HTTP是单向的通信协议</p>
+        <p>对于WebScoket来说，它必须依赖HTPP协议进行一次握手，握手成功后，数据就直接从TCP通道传输，此后就与HTTP无关了</p>
+        <p>特点：
+                <div style="padding-left:50px;">
+                    <P>建立在TCP之上，服务器端的实现比较容易</P>
+                    <p>与HTTP协议有着良好的兼容性</p>
+                    <p>数据格式比较轻量，性能开销小，通信高效</p>
+                    <P>可以发送文本，也可以发送二进制数据</P>
+                    <p>没有同源限制，客户端可以与任意服务器通信</p>
+                </div>
+            </p>
     </div>
     <div id="box6">
         <h3>文件</h3>
@@ -145,7 +147,7 @@
         file.size：<span id="size"></span><br/>
         file.type：<span id="type"></span>
         <p>files有length和item属性，可以通过<mark>files.[index]</mark>或者<mark>files.item(index)</mark>选择文件对象</p>
-        <p>如：var file=document.getElementById('file').files[0]</p>
+        <p><mark>如：var file=document.getElementById('file').files[0]</mark></p>
         <p>FIleReader对象方法：
             <div style="padding-left:90px;">
                 <P><mark>readAsDataURL</mark></P>
@@ -158,7 +160,7 @@
     </div>
     <div id="box7">
         <h3>拖放,dataTransfer</h3>
-        <p>preventDefault()——取消时间默认动作</p>
+        <p>preventDefault()——取消事件默认动作</p>
         <p>读数据：ev.dataTransfer.getData("text")</p>
         <p>存入数据：ev.dataTransfer.setData("text",ev.target.innerHTML)</p>
         <p>将需要拖放的元素的draggable属性设为true：<mark>draggable="true"</mark></p>
@@ -231,7 +233,7 @@
         <h3>背景</h3>
         <P>background-size:length&nbsp;|&nbsp;percentage|&nbsp;cover&nbsp;|&nbsp;contain</P>
         <p>背景图片的定位区域：background-origin：padding-box&nbsp;|&nbsp;border-box&nbsp;|&nbsp;content-box</p>
-        <p>背景图片的绘制区域：background-cilp：padding-box&nbsp;|&nbsp;border-box&nbsp;|&nbsp;content-box</p>
+        <p>背景图片的绘制区域：<mark>background-cilp</mark>：padding-box&nbsp;|&nbsp;border-box&nbsp;|&nbsp;content-box</p>
         <p>box-shadow:x,y,blur,spread,color,inset</p>
         <p>blur:模糊距离，spread:阴影的尺寸</p>
         <p>inset:可选，将外部阴影改为内部阴影</p>
@@ -239,13 +241,12 @@
     <div id="box12">
         <h3>变形处理</h3>
         <P>线性渐变：backgroung：linear-gradient()</P>
-        <p>平移：transform:translate(x,y)</p>
+        <p>平移：transform：translate(x,y)</p>
         <p>旋转：transform：rotate()</p>
         <p>缩放：transform：scale()</p>
         <p>倾斜：transform：skew()</p>
         <p>反转一个图片：transform：scaleX(-1)</p>
-        <p>transform-origin：改变基点位置</p>
-        
+        <p>改变基点位置：transform-origin</p>
     </div>
     <div id="box13">
         <h3>动画效果</h3>
@@ -255,24 +256,25 @@
         <p>延迟时间：transiton-delay</p>
         <p> transition: width 1s ease 2s,height 2s linear</p>
         <p>动画：animation</p>
-        <p>动画名：animation-name</p>
+        <P>调用动画名：animation-name</P>
+        <p>动画播放次数：animation-iteration-count：n | infinite(无限次)</p>
     </div>
     <div id="box14">
         <h3>多列布局</h3>
         <p>列数：column-count</p>
         <p>列宽：column-width</p>
-        <p>columns：column-count column-width</p>
+        <p><mark>columns：column-count column-width</mark></p>
         <p>column-gap：列之间的间隔</p>
         <p>column-rule：间隔线的宽度，样式和颜色</p>
         <p>column-rule：3px outset red;</p>
-        <p>column-rule-width,column-rule-style,column-rule-color</p>
+        <p>column-rule-width，column-rule-style，column-rule-color</p>
         <p>dashed：虚线，solid：实线</p>
         <p>横跨所有列：<mark>column-span</mark>：none&nbsp;|&nbsp;all;</p>
     </div>
     <div id="box15">
         <h3>盒布局</h3>
         <P><mark>display：flex &nbsp; | &nbsp; inline-flex;</mark></P>
-        <p>任何一个容器都可以指定为弹性盒子，设为flex布局以后，子元素的float，clear属性将失效</p>
+        <p>任何一个容器都可以指定为弹性盒子，<mark>设为flex布局以后，子元素的float，clear属性将失效</mark></p>
         <p>定义flex项目在主轴的排列方式：<mark>flex-direction</mark>：row&nbsp; | &nbsp; row-reverse&nbsp; | &nbsp; column | column-reverse</p>
         <img src="img/flex.png" style="height:50px;"/>
         <p>flex-wrap：nowrap&nbsp; | &nbsp;wrap&nbsp; | &nbsp;wrap-reverse(换行，第一行在下方)</p>
@@ -298,11 +300,11 @@
         <p>平板：col-sm-n</p>
         <p>电脑：col-md-n</p>
         <p>col-md-push：向后，col-md-pull：向前(这两个都是利用相对定位实现的)</p>
-        <p>col-md-offset-4：在原本的位置向偏移四个列</p>
+        <p>col-md-offset-4：在原本的位置向右偏移四个列</p>
     </div>
     <div id="box18">
         <h3>排版 <small>副标题(small标签)</small></h3>
-        <p class="lead">突出显示：.lead</p>
+        <p class="lead">突出显示：class=lead</p>
         <p><del>被删除的文本(del/s)</del></p>
         <p><u>下划线(u/ins)</u></p>
         <P>文本左对齐：class="text-left"</P>
@@ -320,7 +322,7 @@
         <p>表框圆角：class="img-thumbnail"</p>
         <h3>表格</h3>
         <p>条纹状表格：class="table-striped"</p>
-        <p>给每个单元格添加边框：class="table-bordered</p>
+        <p>给每个单元格添加边框：class="table-bordered"</p>
         <p>鼠标悬停：table-hover</p>
         <p>使表格更加紧凑：table-condensed</p>
         <h3>表单</h3>
@@ -335,7 +337,7 @@
         <h3>按钮</h3>
         <p>可为a,button,input元素添加class="btn"</p>
         <p>按钮尺寸：btn-lg,btn-sm,btn-xs</p>
-        <p>关闭按钮：class="button"</p>
+        <p>关闭按钮：class="close"</p>
         <p>下拉：class="caret"</p>
         <h3>组件</h3>
         <p>引用图标：class="gyphicon gyphicon-star"</p>
@@ -345,13 +347,14 @@
     </div>
     <div id="box19">
         <h3>插件</h3>
-        <p>面包屑：class="breadcrumb"</p>
-        <p>标签页：class="nav nav-tabs"</p>
+        <p><mark>面包屑：class="breadcrumb"</mark></p>
+        <p><mark>标签页：class="nav nav-tabs"</mark></p>
         <p>两端对齐：nav-justified</p>
         <p><mark>分页：class="pagination"</mark></p>
         <img src="img/fenye.png" style="height:100px;" />
-        <p>翻页：class="pager</p>
+        <p>翻页：class="pager"</p>
         <p><mark>徽章：class="badge"</mark></p>
+        <p><<span>span class="badge"</span>>34<<span>/span</span>></p>
         <h3>模态框</h3>
         <img src="img/modal.png" style="height:400px;"/>
         <h3>导航条</h3>
